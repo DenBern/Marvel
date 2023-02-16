@@ -4,7 +4,7 @@ const AppHeader = () => {
     return (
         <header className="app__header">
             <h1 className="app__title">
-                <a href="#">
+                <a href="#" alt="tile">
                     <span>Marvel</span> information portal
                 </a>
             </h1>
