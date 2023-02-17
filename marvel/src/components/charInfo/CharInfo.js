@@ -3,6 +3,7 @@ import { Spinner } from '../spinner/Spinner';
 import { ErrorMessage } from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
 import MarvelService from '../../services/MarvelService';
+
 import './charInfo.scss';
 
 class CharInfo extends Component {
@@ -36,7 +37,7 @@ class CharInfo extends Component {
         this.marvelService
             .getCharacter(charId)
             .then(this.onCharLoaded)
-            .catch(this.onError(this.onError))
+            .catch(this.onError)
     }
 
     onCharLoaded = (char) => {

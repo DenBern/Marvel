@@ -86,5 +86,4 @@ class CharList extends Component {
     }
 }
 
-
 export default CharList;
