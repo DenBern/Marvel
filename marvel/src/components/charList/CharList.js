@@ -7,16 +7,15 @@ import { ErrorMessage } from '../errorMessage/ErrorMessage';
 
 import './charList.scss';
 
-const CharList = (props) => {
-
-    const [charList, setCharList] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(210);
-    const [charEnded, setCharEnded] = useState(false);
-
-    const marvelService = new MarvelService();
+class CharList extends Component {
+    state = {
+        charList: [],
+        loading: true,
+        error: false,
+        newItemLoading: false,
+        offset: 1560,
+        charEnded: false,
+    }
 
     useEffect(() => {
         onRequest()
