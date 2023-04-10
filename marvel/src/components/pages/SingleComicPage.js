@@ -6,6 +6,7 @@ import { ErrorMessage } from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
 
 import './singleComicPage.scss';
+import AppBanner from '../appBanner/AppBanner';
 
 export const SingleComicPage = () => {
 
@@ -33,6 +34,7 @@ export const SingleComicPage = () => {
 
     return (
         <>
+            <AppBanner/>
             {errorMessage}
             {spinner}
             {content}
