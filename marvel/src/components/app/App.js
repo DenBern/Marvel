@@ -4,9 +4,9 @@ import AppHeader from "../appHeader/AppHeader";
 import { Spinner } from '../spinner/Spinner';
 import { MainPage, ComicsPage, SingleComicPage, Page404 } from '../pages';
 import SingleComicLayuot from '../pages/singleComicLayout/SingleComicLayout';
-import SingleComicLayout from '../pages/singleComicLayout/SingleComicLayout';
 
 
+// Doesn't not work - 176
 // const Page404 = lazy(() => import('../pages/404'));
 // const MainPage = lazy(() => import('../pages/MainPage'));
 // const ComicsPage = lazy(() => import('../pages/ComicsPage'));
