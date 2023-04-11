@@ -1,6 +1,6 @@
 import img from './error.gif'
 
-export const ErrorMessage = () => {
+const ErrorMessage = () => {
     return (
       <img 
         src={img} 
@@ -9,3 +9,5 @@ export const ErrorMessage = () => {
       />
     )
 }
+
+export default ErrorMessage;
