@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import useMarvelService from '../../services/MarvelService';
-import Spinner from '../spinner/Spinner';
-import ErrorMessage from '../errorMessage/ErrorMessage';
+import setContent from '../../utils/setContent';
 
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
@@ -9,15 +8,15 @@ import mjolnir from '../../resources/img/mjolnir.png';
 const RandomChar = () => {
     const [char, setChar] = useState({});
 
-    const {loading, error, getCharacter, clearError} = useMarvelService ();
+    const {getCharacter, clearError, process, setProcess} = useMarvelService ();
 
     useEffect(() => {
         updateChar();
-        // const timerId = setInterval(updateChar, 6000);
+        const timerId = setInterval(updateChar, 6000);
 
-        // return () => {
-        //     clearInterval(timerId)
-        // }
+        return () => {
+            clearInterval(timerId)
+        }
     }, [])
 
     const onCharLoaded = (char) => {
@@ -29,17 +28,19 @@ const RandomChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
         getCharacter(id)
             .then(onCharLoaded)
+            .then(() => setProcess('confirmed'))
     }
 
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? <View char={char}/> : null;
+    // const errorMessage = error ? <ErrorMessage /> : null;
+    // const spinner = loading ? <Spinner /> : null;
+    // const content = !(loading || error) ? <View char={char}/> : null;
 
     return (
         <div className="randomchar">
-            {errorMessage}
+            {/* {errorMessage}
             {spinner}
-            {content}
+            {content} */}
+            {setContent(process, View, char)}
             <div className="randomchar__static">
                 <p className="randomchar__title">
                     Random character for today!<br/>
@@ -61,8 +62,8 @@ const RandomChar = () => {
     )
 }
 
-const View = ({char}) => {
-    const {name, description, thumbnail, homepage, wiki} = char;
+const View = ({data}) => {
+    const {name, description, thumbnail, homepage, wiki} = data;
     let imgStyle = {'objectFit' : 'cover'};
 
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
